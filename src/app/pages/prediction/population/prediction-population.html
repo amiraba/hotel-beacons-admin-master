@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6">
+    <sebm-google-map [streetViewControl]="false" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles"
+                     (mapClick)="mapClicked($event)">
+
+      <sebm-google-map-marker
+        *ngFor="let m of markers;let i=index"
+        [latitude]="m.lat" [markerDraggable]="false"
+        [longitude]="m.lng"></sebm-google-map-marker>
+
+      <sebm-google-map-circle
+        *ngFor="let m of markers;let i=index" [latitude]="m.lat" [longitude]="m.lng"
+        [radius]="m.radius"
+        [fillColor]="m.color"
+        [circleDraggable]="false"
+        [editable]="false">
+      </sebm-google-map-circle>
+
+    </sebm-google-map>
+
+  </div>
+  <div class="row">
+    <datepicker [(ngModel)]="date" showWeeks="true" (ngModelChange)="onChange($event)"></datepicker>
+  </div>
+
+</div>
+
